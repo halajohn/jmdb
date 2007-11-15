@@ -50,7 +50,10 @@ Jmdb 除了包含一個主程式執行檔外, 還有一個 emacs 介面的 elisp
 =螢幕快照=
 
 Jmdb 參數選單
+http://lh5.google.com/wei.hu.tw/RzxPgbZHyHI/AAAAAAAAAFw/_LX7bMzkD3E/jmdb_start.png
 
 Jmdb 的 Emacs 介面
+http://lh4.google.com/wei.hu.tw/RzxPgLZHyFI/AAAAAAAAAFg/VAWIrWqxueQ/jmdb_init.png
 
 當執行到 breakpoint 時, Jmdb 的 Emacs 介面會自動顯示出對應的原始碼
+http://lh5.google.com/wei.hu.tw/RzxPgbZHyGI/AAAAAAAAAFo/TqTIzjwc9sY/jmdb_running.png
