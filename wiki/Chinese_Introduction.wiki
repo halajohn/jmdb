@@ -1,0 +1,56 @@
+=簡介=
+
+這是一個用來對 J2ME 的 midlet 進行 debug 的除錯器 (debugger). Jmdb 是以 GNU Gdb 為模擬的對象, Jmdb 的特點有:
+
+  * 具有 command line 介面以及 Emacs 的圖形介面.
+  * 在 Command line 模式下, 具有 command history 的功能, 也就是說, 按下 'Up Arrow' 以及 'Down Arrow' 可以回朔之前執行過的 debugger 命令.
+  * 在 Emacs 模式下, Jmdb 採用 emacs 內建的 comint 功能來完成 command history 的功能.
+  * 符合 i18n 標準的繁體中文化.
+
+=Jmdb 的命令=
+
+  * break ---------- Install a breakpoint
+  * continue ---------- Continue execuating
+  * down ---------- Go down 1 stack frame
+  * help ---------- Print command help
+  * info ---------- Print several information
+    * class ---------- Print information of the specified class
+    * field ---------- Print field information of the specified class
+    * frame ---------- Print stack frame information of the specified thread
+    * linetable ---------- Print line table of the specified method
+    * method ---------- Print method information of the specified class
+    * thread ---------- Print thread information in the whole Java VM or of the specified thread
+    * variable ---------- Print variable information of the specified method
+  * next ---------- Execuate to the next source line
+  * print ---------- Print value of the specified variable.
+  * quit ---------- Quit Jmdb
+  * thread ---------- Thread operation
+    * resume ---------- Thread resume operation
+      * all ---------- Resume all threads in the Java VM
+    * suspend ---------- Thread suspend operation
+      * all ---------- Suspend all threads in the Java VM
+  * up ---------- Go up 1 stack frame
+
+除此之外, Jmdb 還有自動搜尋 deugger 命令的功能, 也就是說, 使用者可以只輸入一小部份的 debugger 命令, 並且按下 Enter 鍵後, Jmdb 將會聰明的知道使用者想要執行的是那一個 debugger 命令. 比方說, 如果使用者想要執行 quit 命令, 那麼使用者只要鍵入 q (或 qu 或 qui) 並且按下 Enter 鍵, Jmdb 將會知道使用者想要執行的是 quit 而離開整個 Jmdb 除錯器. 第二個例子是, 假設使用者想要鍵入 help thread resume all 來得知如何去 resume Java VM 內的全部 thread. 如今透過 Jmdb 的自動決定功能, 使用者只要鍵入 h t r a 就可以完成 help thread resume all 的功能. 這個自動決定的功能在 Jmdb 內的任何地方都可以見到.
+
+另外, 透過 Emacs 介面的輔助, 當 Java VM 執行到我們事先定義的 breakpoint 時, Jmdb 的 Emacs 介面將會自動顯示該 breakpoint 所對應的原始碼檔案, 並且跳到 breakpoint 所在的那一行. 經由這個方便的功能, 我們便可以利用 Jmdb 來進行 Java source level 的 debug. 此時, 使用者可以鍵入 print 來顯示某個變數的值, 鍵入 next 來執行一行程式碼, 鍵入 up 來觀看 calling frame, 或呼叫 down 來觀看 called frame.
+
+=套件內容=
+
+Jmdb 除了包含一個主程式執行檔外, 還有一個 emacs 介面的 elisp 檔案, 以及一個繁體中文的 locale 檔.
+
+=系統需求=
+
+由於 Jmdb 是以 C++ 語言寫成, 並且以 gcc-3.3 來進行編譯, 因此如果你想要嘗試 Jmdb 的話, 你所需要的系統需求為:
+
+  * libstdc++.so.5
+  * libgcc_s.so.1
+  * GNU Emacs 21
+
+=螢幕快照=
+
+Jmdb 參數選單
+
+Jmdb 的 Emacs 介面
+
+當執行到 breakpoint 時, Jmdb 的 Emacs 介面會自動顯示出對應的原始碼
