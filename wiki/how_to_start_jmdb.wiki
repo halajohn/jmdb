@@ -1,0 +1,85 @@
+==========================================================================================
+
+If we want to use Jmdb to debug a midlet named Calculator, the steps are:
+
+  * Copy Calculator.jar and Calculator.jad to midp1.0.3fcs/buils/linux/bin directory.
+
+  * Start MIDP:
+
+Enter the following command in midp1.0.3fcs/buils/linux/bin directory.
+
+./midp_g -descriptor Calculator.jad -classpath ../classes:Calculator.jar -debugger -port 6000
+
+  * Start kdp in the same directory:
+
+java -classpath kdp.jar kdp.KVMDebugProxy -classpath <Directories where you put Java classes, separated by colon> -r <The name of your computer> 6000 -l 8000 -p
+
+Ex:
+
+java -classpath kdp.jar kdp.KVMDebugProxy -classpath ../classes:/MyData/Program_files/wtk2.1/apps/Calculator/classes/ -r WeiComputer 6000 -l 8000 -p
+
+Note that if you want to debug A.class, then the A.class file searched by the path
+specified by the "-classpath" should not remove the debug information, ex: line table.
+
+  * Load jmdb.el into Emacs.
+
+  * Start jmdb in Emacs (i.e. Enter M-x jmdb), and enter the following command
+
+./jmdb --srcpath<Directories where you store the Java source files, separated by colon>
+
+Ex:
+
+./jmdb --srcpath/MyData/MyWorking/jmdb/midp1.0.3fcs/src/share/classes/:/MyData/Program_files/wtk2.1/apps/Calculator/src/
+
+  * In the beginning, you have to enter "c" (means continue) to make midp continue execution.
+
+  * Start the execution of the debugged midlet (ex: Calculator) in the MIDP emulator.
+Such that the KVM can load the Calculator.class file.
+
+  * You can use "info class ...", "info method ...", "break ..." commands to watch the execution of this midlet.
+
+  * You can enter "quit" to exit Jmdb, and Jmdb will resume the VM execution depends on the VM status.
+
+==========================================================================================
+
+例如要使用 Jmdb 來 debug 一個名叫 Calculator 的 midlet, 步驟如下:
+
+  * 把 Calculator.jar 及 Calculator.jad 拷貝到 midp1.0.3fcs/buils/linux/bin 目錄下.
+
+  * 啟動 MIDP:
+
+在 midp1.0.3fcs/buils/linux/bin 目錄下執行
+
+./midp_g -descriptor Calculator.jad -classpath ../classes:Calculator.jar -debugger -port 6000
+
+  * 在同樣的目錄下啟動 kdp:
+
+java -classpath kdp.jar kdp.KVMDebugProxy -classpath <放 Java class 檔的目錄, 以冒號隔開> -r <你電腦的名稱> 6000 -l 8000 -p
+
+Ex:
+
+java -classpath kdp.jar kdp.KVMDebugProxy -classpath ../classes:/MyData/Program_files/wtk2.1/apps/Calculator/classes/ -r WeiComputer 6000 -l 8000 -p
+
+注意如果你要 debug A.class 檔的話, 那麼在由 -classpath 路徑指到
+的 A.class 檔一定不能把 debug information, 比方說 line
+table 拿掉的 class 檔.
+
+  * 在 Emacs 裡面載入 jmdb.el 這個 elisp 檔.
+
+  * 在 emacs 中執行 jmdb (i.e. 鍵入 M-x jmdb), 並且執行
+
+./jmdb --srcpath<用來存放 Java source 的目錄, 以冒號隔開>
+
+Ex:
+
+./jmdb --srcpath/MyData/MyWorking/jmdb/midp1.0.3fcs/src/share/classes/:/MyData/Program_files/wtk2.1/apps/Calculator/src/
+
+  * 一開始需要鍵入 c (i.e. continue) 來使 MIDP 繼續動作.
+
+  * 然後在模擬器中開始執行 Calculator, 這樣 KVM 端才會載入 Calculator.class.
+
+  * 就可以執行 info class ..., info method ..., break ... 來觀察 midlet 的執行.
+
+  * 最後鍵入 quit 來離開 jmdb, jmdb 會自動視 vm 的狀態來恢復 vm 的執行.
+
+==========================================================================================
