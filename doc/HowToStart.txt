@@ -1,0 +1,25 @@
+1) 把 Calculator.jar 及 Calculator.jad copy 到 midp1.0.3fcs/buils/linux/bin 目錄下.
+
+2) 啟動 MIDP
+
+在 midp1.0.3fcs/buils/linux/bin 目錄下執行
+
+./midp_g -descriptor Calculator.jad -classpath ../classes:Calculator.jar -debugger -port 6000
+
+3) 在同樣的目錄下啟動 kdp
+
+java -classpath kdp.jar kdp.KVMDebugProxy -classpath ../classes:/MyData/Program_files/wtk2.1/apps/Calculator/classes/ -r WeiComputer 6000 -l 8000 -p
+
+在這裡一定要用 /MyData/Program_files/wtk2.1/apps/Calculator/classes/ 才行, 因為這個目錄下的 Calculator.class 是沒有把 debug information, 比方說 line table 拿掉的 class 檔.
+
+4) 載入 jmdb.el 這個 emacs 檔.
+
+5) 在 emacs 中鍵入 M-x jmdb, 並且執行 ./jmdb --srcpath/MyData/MyWorking/jmdb/midp1.0.3fcs/src/share/classes/:/MyData/Program_files/wtk2.1/apps/Calculator/src/
+
+6) 一開始需要鍵入 c 來使 MIDP 繼續動作.
+
+7) 然後在模擬器中開始執行 Calculator, 這樣 KVM 端才會載入 Calculator.class.
+
+8) 就可以執行 info class ..., info method ..., break ... 來觀察 midlet 的執行.
+
+9) 最後鍵入 quit 來離開 jmdb, jmdb 會自動視 vm 的狀態來恢復 vm 的執行.
