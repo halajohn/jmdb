@@ -1,0 +1,11 @@
+1) xgettext src/*.cpp
+
+... generating messages.po
+
+2) msgmerge jmdb.po messages.po > ddd.po
+
+3) delete jmdb.po messages.po
+
+4) rename ddd.po to jmdb.po
+
+5) modify jmdb.po
