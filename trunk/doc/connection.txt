@@ -1,0 +1,10 @@
+1) kdp uses receivePacket() in SocketConnection.java to get packet from debugger (jmdb),
+   receivePacket() will see the length in packet header to receive the whole packet from debugger,
+   and then process that packet based on its cmdset and cmd in packet header, or forward that packet
+   to the KVM.
+   
+   Thus if I forget to send the required size of a packet, then the kdp will still wait to
+   receive that packet, and not forward it to the KVM.
+   
+   As a result, the KVM still blocks in the read socket call because KVM doesn't receive any
+   byte from the kdp.
