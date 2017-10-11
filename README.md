@@ -49,11 +49,11 @@ Because Jmdb is written by the C++ programming language, and compiled by the GNU
 
 # Screenshots
 
-Jmdb command-line options
+Jmdb command-line options  
 ![](http://lh5.google.com/wei.hu.tw/RzxPgbZHyHI/AAAAAAAAAFw/_LX7bMzkD3E/jmdb_start.png)
 
-The Emacs interface of Jmdb
+The Emacs interface of Jmdb  
 ![](http://lh4.google.com/wei.hu.tw/RzxPgLZHyFI/AAAAAAAAAFg/VAWIrWqxueQ/jmdb_init.png)
 
-When Java VM hits breakpoints, the Emacs interfcae of Jmdb will show the corresponding Java source codes automatically. 
+When Java VM hits breakpoints, the Emacs interfcae of Jmdb will show the corresponding Java source codes automatically.  
 ![](http://lh5.google.com/wei.hu.tw/RzxPgbZHyGI/AAAAAAAAAFo/TqTIzjwc9sY/jmdb_running.png)
